@@ -1,3 +1,4 @@
+const {expect} = require('chai');
 const { batteryIsOk } = require("./bms-monitor");
 
 expect(batteryIsOk(25, 70, 0.7)).to.be.true;
