@@ -13,4 +13,4 @@ expect(isChargeRateNormal(0.8, 0.4, "Charge Rate")).to.be.true;
 expect(isChargeRateNormal(0.8, 0.9, "Charge Rate")).to.be.false;
 
 expect(batteryIsOk(25, 70, 0.7)).to.be.true;
-expect(batteryIsOk(50, 85, 0.0)).to.be.true;
+expect(batteryIsOk(50, 85, 0.0)).to.be.false;
