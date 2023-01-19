@@ -19,8 +19,8 @@ function isChargeRateNormal(limit, valueToBeChecked, errMsg) {
 function batteryIsOk(temperature, soc, chargeRate) {
 	var isTemperatureNormal = isThresholdBreach(0, 45, temperature, "Temperature");
 	var isSocNormal = isThresholdBreach(20, 80, soc, "State of Charge");
-	var isChargeRateNormal = isChargeRateNormal(0.8, chargeRate, "Charge Rate");
-	return isTemperatureNormal && isSocNormal && isChargeRateNormal;
+	var isChrgRateNormal = isChargeRateNormal(0.8, chargeRate, "Charge Rate");
+	return isTemperatureNormal && isSocNormal && isChrgRateNormal;
 }
 
 expect(batteryIsOk(25, 70, 0.7)).to.be.true;
