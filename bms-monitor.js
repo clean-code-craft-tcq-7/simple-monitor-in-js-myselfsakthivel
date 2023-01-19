@@ -1,17 +1,26 @@
 const {expect} = require('chai');
 
-function batteryIsOk(temperature, soc, charge_rate) {
-    if (temperature < 0 || temperature > 45) {
-        console.log('Temperature is out of range!');
-        return false;
-    } else if (soc < 20 || soc > 80) {
-        console.log('State of Charge is out of range!')
-        return false;
-    } else if (charge_rate > 0.8) {
-        console.log('Charge rate is out of range!');
+function isThresholdBreach(startValue, endValue, valueToBeChecked, errMsg) {
+    if (valueToBeChecked < startValue || valueToBeChecked > endValue) {
+        console.log(errMsg + 'is out of range!');
         return false;
     }
     return true;
+}
+
+function isChargeRateNormal(limit, valueToBeChecked, errMsg) {
+	if (valueToBeChecked > limit) {
+        console.log(errMsg + 'is out of range!');
+        return false;
+    }
+    return true;
+}
+
+function batteryIsOk(temperature, soc, chargeRate) {
+	var isTemperatureNormal = isThresholdBreach(0, 45, temperature, "Temperature");
+	var isSocNormal = isThresholdBreach(20, 80, soc, "State of Charge");
+	var isChargeRateNormal = isChargeRateNormal(0.8, chargeRate, "Charge Rate");
+	return isTemperatureNormal && isSocNormal && isChargeRateNormal;
 }
 
 expect(batteryIsOk(25, 70, 0.7)).to.be.true;
