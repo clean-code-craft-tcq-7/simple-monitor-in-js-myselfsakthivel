@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { batteryIsOk } = require("./bms-monitor");
+const { batteryIsOk, isThresholdBreach, isChargeRateNormal } = require("./bms-monitor");
 
 expect(isThresholdBreach(0, 45, 20, "Temperature")).to.be.true;
 expect(isThresholdBreach(0, 45, 0, "Temperature")).to.be.true;
