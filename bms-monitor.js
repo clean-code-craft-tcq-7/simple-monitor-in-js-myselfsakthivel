@@ -22,3 +22,5 @@ function batteryIsOk(temperature, soc, chargeRate) {
 	var isChrgRateNormal = isChargeRateNormal(0.8, chargeRate, "Charge Rate");
 	return isTemperatureNormal && isSocNormal && isChrgRateNormal;
 }
+
+module.exports = { isThresholdBreach, isChargeRateNormal, batteryIsOk };
